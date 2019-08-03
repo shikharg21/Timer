@@ -57,7 +57,7 @@ $(() => {
                 clearInterval(myinterval)
                 alert('TIME UP BITCH!!!!!')
             }
-        }, 10)
+        }, 1000)
     }
 
     rst.click(() => {
