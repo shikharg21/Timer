@@ -28,36 +28,37 @@ $(() => {
     })
     function intervalControl(Inhrs, Inmin, Insec) {
         if (Inmin > 59 || Insec > 59) {
-            alert('FUCK YOU BITCH!!')
+            alert('Please ener correct values!!')
+        } else {
+            const myinterval = setInterval(() => {
+                $('#hrs').html(Inhrs)
+                $('#mins').html(Inmin)
+                $('#secs').html(Insec);
+
+                stop.click(() => {
+                    dum = false
+                    clearInterval(myinterval)
+                })
+
+                Insec = Insec - 1;
+                curr--
+
+                let areaval = (Number(curr / total).toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 2 }))
+                $('#prog').html(areaval)
+                $('#prog').attr('style', 'width:areaval')
+                if (Insec < 0) {
+                    Inmin--
+                    Insec = 59
+                } if (Inmin < 0) {
+                    Inhrs--
+                    Inmin = 59
+                    Insec = 59
+                } if (Inhrs < 0) {
+                    clearInterval(myinterval)
+                    alert('TIME UP !!')
+                }
+            }, 1000)
         }
-        const myinterval = setInterval(() => {
-            $('#hrs').html(Inhrs)
-            $('#mins').html(Inmin)
-            $('#secs').html(Insec);
-
-            stop.click(() => {
-                dum = false
-                clearInterval(myinterval)
-            })
-
-            Insec = Insec - 1;
-            curr--
-
-            let areaval = (Number(curr / total).toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 2 }))
-            $('#prog').html(areaval)
-            $('#prog').attr('style', 'width:areaval')
-            if (Insec < 0) {
-                Inmin--
-                Insec = 59
-            } if (Inmin < 0) {
-                Inhrs--
-                Inmin = 59
-                Insec = 59
-            } if (Inhrs < 0) {
-                clearInterval(myinterval)
-                alert('TIME UP BITCH!!!!!')
-            }
-        }, 1000)
     }
 
     rst.click(() => {
